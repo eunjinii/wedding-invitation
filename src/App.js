@@ -15,7 +15,7 @@ function App() {
         {/* 헤더 섹션 */}
         <header style={{ marginTop: '80px', marginBottom: '40px' }}>
           <h1 style={{ fontSize: '1.8rem', fontWeight: '300', letterSpacing: '3px' }}>
-            BAE JUNSIK & LEE EUNJIN
+            <div style={{ padding: 10 }}>BAE JUNSIK</div> <div>&</div> <div style={{ padding: 10 }}>LEE EUNJIN</div>
           </h1>
           <p style={{ color: '#888', marginTop: '10px' }}>2026. 08. 22. SAT PM 12:00</p>
         </header>

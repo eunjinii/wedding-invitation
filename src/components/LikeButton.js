@@ -25,13 +25,13 @@ const LikeButton = () => {
     // 클릭 시 꽃가루 팡! 효과
     const handleLike = async () => {
         confetti({
-            particleCount: 400,
+            particleCount: 300,
             angle: 130,
-            spread: 110,
+            spread: 100,
             drift: -1,
-            origin: { x: 0.9, y: 0.85 }, // 고정 버튼 위치 근처에서 터지게
+            origin: { x: 0.95, y: 0.9 }, // 고정 버튼 위치 근처에서 터지게
             colors: ['#ff4d4d', '#ffcccc', '#ffd700', '#ffffff'],
-            scalar: 1.4
+            scalar: 1.2
         });
 
         try {

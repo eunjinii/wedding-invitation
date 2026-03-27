@@ -124,12 +124,59 @@ const Guestbook = () => {
     );
 };
 
-// 스타일은 이전과 동일하게 유지 (placeholder 텍스트로 선택 사항임을 명시)
-const formStyle = { display: 'flex', flexDirection: 'column', gap: '8px', padding: '15px', backgroundColor: '#fdfdfd', border: '1px solid #eee', borderRadius: '12px' };
-const inputStyle = { padding: '10px', boxSizing: 'border-box', border: '1px solid #ddd', borderRadius: '6px', fontSize: '0.9rem' };
-const toggleContainerStyle = { textAlign: 'left', padding: '2px 0' };
-const submitStyle = { width: '100%', padding: '12px', backgroundColor: '#1a1a1a', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' };
-const messageBoxStyle = { borderBottom: '1px solid #f0f0f0', padding: '15px 0' };
-const deleteBtnStyle = { background: 'none', border: 'none', color: '#ddd', cursor: 'pointer', fontSize: '0.7rem', textDecoration: 'underline' };
+const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+    padding: '15px',
+    backgroundColor: '#fdfdfd',
+    border: '1px solid #eee',
+    borderRadius: '12px',
+    boxSizing: 'border-box', // 박스 크기 계산 방식 고정
+    width: '100%'
+};
+
+const inputStyle = {
+    padding: '10px',
+    boxSizing: 'border-box',
+    border: '1px solid #ddd',
+    borderRadius: '6px',
+    fontSize: '0.9rem',
+    minWidth: '0', // ⭐️ 중요: flex 환경에서 박스가 삐져나가는 것을 방지
+    width: '100%'  // 기본적으로 꽉 차게
+};
+
+const toggleContainerStyle = {
+    textAlign: 'left',
+    padding: '2px 0'
+};
+
+const submitStyle = {
+    width: '100%',
+    padding: '12px',
+    backgroundColor: '#1a1a1a',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '6px',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    boxSizing: 'border-box'
+};
+
+const messageBoxStyle = {
+    borderBottom: '1px solid #f0f0f0',
+    padding: '15px 0',
+    wordBreak: 'break-all' // 긴 영문/숫자 텍스트 줄바꿈 방지
+};
+
+const deleteBtnStyle = {
+    background: 'none',
+    border: 'none',
+    color: '#ddd',
+    cursor: 'pointer',
+    fontSize: '0.7rem',
+    textDecoration: 'underline',
+    flexShrink: 0 // 버튼이 찌그러지지 않게
+};
 
 export default Guestbook;
