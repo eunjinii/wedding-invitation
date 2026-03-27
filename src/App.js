@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import './App.css'; // CSS 파일 임포트 필수!
+import './App.css';
 import LikeButton from './components/LikeButton';
 import Guestbook from './components/Guestbook';
 import DDay from './components/DDay';
@@ -13,11 +13,47 @@ function App() {
     <div className="App">
       <div className="container">
         {/* 헤더 섹션 */}
-        <header style={{ marginTop: '80px', marginBottom: '40px' }}>
-          <h1 style={{ fontSize: '1.8rem', fontWeight: '300', letterSpacing: '3px' }}>
-            <div style={{ padding: 10 }}>BAE JUNSIK</div> <div>&</div> <div style={{ padding: 10 }}>LEE EUNJIN</div>
+        <header style={{
+          marginTop: '120px',
+          marginBottom: '40px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center'
+        }}>
+          <h1 style={{ fontSize: '1.8rem', fontWeight: '300', letterSpacing: '3px', margin: 0 }}>
+            <div style={{ padding: '5px 10px' }}>BAE JUNSIK</div>
+            <div style={{ fontSize: '1.2rem', color: '#777' }}>&</div>
+            <div style={{ padding: '5px 10px' }}>LEE EUNJIN</div>
           </h1>
-          <p style={{ color: '#888', marginTop: '10px' }}>2026. 08. 22. SAT PM 12:00</p>
+
+          <div style={{
+            marginTop: '30px',
+            marginBottom: '30px',
+            width: '1px',
+            height: '60px',
+            backgroundColor: "#ddd",
+            marginRight: 'auto',
+            marginLeft: 'auto'
+          }}></div>
+
+          <p style={{ color: '#444', marginTop: '10px', fontSize: '1rem', letterSpacing: '1px' }}>
+            2026년 08월 22일 토요일 <b>오후 12:00</b>
+          </p>
+          <p style={{ color: '#444', marginTop: '5px', fontSize: '1rem', fontWeight: '400' }}>
+            논현2동 성당
+          </p>
+          <img
+            src={process.env.PUBLIC_URL + "/images/church.png"}
+            alt="church image"
+            style={{
+              marginTop: '30px',
+              width: '100%',
+              maxWidth: '350px',
+              height: 'auto',
+              borderRadius: '12px'
+            }}
+          />
         </header>
 
         {/* 1. 디데이 */}

@@ -91,7 +91,7 @@ const unitBoxStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width: '60px'
+    width: '50px'
 };
 
 const numberStyle = {
