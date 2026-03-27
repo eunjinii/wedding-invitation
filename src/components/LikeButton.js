@@ -20,9 +20,8 @@ const LikeButton = () => {
             return unsubscribe;
         };
         setupLikes();
-    }, [statsRef]);
+    }, []);
 
-    // 클릭 시 꽃가루 팡! 효과
     const handleLike = async () => {
         confetti({
             particleCount: 300,

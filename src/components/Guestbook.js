@@ -18,7 +18,7 @@ const Guestbook = () => {
             setMessages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         });
         return unsubscribe;
-    }, [colRef]);
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -142,8 +142,8 @@ const inputStyle = {
     border: '1px solid #ddd',
     borderRadius: '6px',
     fontSize: '0.9rem',
-    minWidth: '0', // ⭐️ 중요: flex 환경에서 박스가 삐져나가는 것을 방지
-    width: '100%'  // 기본적으로 꽉 차게
+    minWidth: '0',
+    width: '100%'
 };
 
 const toggleContainerStyle = {
@@ -166,7 +166,7 @@ const submitStyle = {
 const messageBoxStyle = {
     borderBottom: '1px solid #f0f0f0',
     padding: '15px 0',
-    wordBreak: 'break-all' // 긴 영문/숫자 텍스트 줄바꿈 방지
+    wordBreak: 'break-all'
 };
 
 const deleteBtnStyle = {
@@ -176,7 +176,7 @@ const deleteBtnStyle = {
     cursor: 'pointer',
     fontSize: '0.7rem',
     textDecoration: 'underline',
-    flexShrink: 0 // 버튼이 찌그러지지 않게
+    flexShrink: 0
 };
 
 export default Guestbook;
