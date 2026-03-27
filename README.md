@@ -10,8 +10,6 @@ Welcome to our wedding invitation repository! This is a special, personalized on
 - **Guestbook**: Guests can leave congratulatory messages.
 - **Heart Likes**: A sweet interaction to celebrate our new beginning.
 
----
-
 ## Tech Stack
 
 - **Frontend**: React.js
