@@ -72,14 +72,6 @@ const containerStyle = {
     padding: '0 20px',
 };
 
-const titleStyle = {
-    fontSize: '0.9rem',
-    letterSpacing: '2px',
-    color: '#888',
-    textTransform: 'uppercase',
-    marginBottom: '20px'
-};
-
 const timerContainerStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -95,20 +87,20 @@ const unitBoxStyle = {
 };
 
 const numberStyle = {
-    fontSize: '1.8rem',
+    fontSize: '2rem',
     fontWeight: '300',
     color: '#333'
 };
 
 const labelStyle = {
-    fontSize: '0.65rem',
-    color: '#aaa',
+    fontSize: '0.8rem',
+    color: '#777',
     marginTop: '5px'
 };
 
 const colonStyle = {
     fontSize: '1.2rem',
-    color: '#ddd',
+    color: '#aaa',
     paddingBottom: '20px'
 };
 

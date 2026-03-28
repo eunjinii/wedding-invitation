@@ -1,0 +1,69 @@
+/* src/Reset.css */
+
+@font-face {
+  font-family: 'GowunBatang';
+  src: url('./fonts/GowunBatang-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GowunBatang';
+  src: url('./fonts/GowunBatang-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* 1. 모든 요소의 마진, 패딩 제거 및 박스 모델 고정 */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* 2. HTML, Body 기본 설정 (스크롤 부드럽게) */
+  html {
+    -webkit-text-size-adjust: 100%; /* iOS 폰트 크기 자동 조절 방지 */
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'GowunBatang', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    word-break: keep-all; /* 한글 줄바꿈 예쁘게 */
+  }
+  
+  /* 3. 리스트, 링크 스타일 초기화 */
+  li, ul, ol {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* 4. 이미지, 미디어 요소 초기화 */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /* 5. 폼 요소 초기화 (버튼, 인풋 등 기본 스타일 제거) */
+  input, button, textarea, select {
+    font: inherit;
+    outline: none;
+    border: none;
+    background: none;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  /* 6. 테이블 초기화 */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }

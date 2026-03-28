@@ -31,8 +31,10 @@ const Gallery = () => {
 
     return (
         <div style={{ margin: '50px 0', padding: '0 20px', textAlign: 'center' }}>
-            <h4 style={{ marginBottom: '20px', color: '#555' }}>Gallery</h4>
-
+            <div style={titleContainerStyle}>
+                <div style={titleStyle}>Gallery</div>
+                <div style={verticalLineStyle}></div>
+            </div>
             {/* 📸 2. 대표 이미지 (메인 뷰어) */}
             <div style={mainViewerStyle}>
                 {/* 좌우 네비게이션 버튼 (모바일에서도 터치 가능하도록 큼직하게) */}
@@ -73,19 +75,43 @@ const Gallery = () => {
     );
 };
 
-// --- 스타일링 (CSS-in-JS) ---
-
 // 메인 뷰어 컨테이너 (상대 좌표 설정)
+
+
+const titleContainerStyle = {
+    marginBottom: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center'
+}
+
+const titleStyle = {
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    color: '#ff4d4d',
+    marginBottom: '10px',
+    letterSpacing: '2px'
+};
+
+const verticalLineStyle = {
+    marginTop: '10px',
+    marginBottom: '20px',
+    width: '30px',
+    height: '1px',
+    backgroundColor: "#ddd"
+};
+
 const mainViewerStyle = {
     position: 'relative',
     width: '100%',
     maxWidth: '500px', // PC에서도 너무 커지지 않게 제한
     margin: '0 auto',
-    aspectRatio: '3 / 4', // 세로 사진 비율 고정 (요즘 트렌드)
+    aspectRatio: '3 / 4',
     overflow: 'hidden',
-    borderRadius: '15px',
-    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-    backgroundColor: '#f5f5f5', // 로딩 전 임시 색상
+    // borderRadius: '15px',
+    // boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+    backgroundColor: '#eee', // 로딩 전 임시 색상
 };
 
 // 메인 이미지 스타일 (부드러운 전환 효과)
@@ -121,8 +147,8 @@ const navBtnStyle = {
 // 썸네일 슬라이더 컨테이너 (가로 스크롤 허용)
 const thumbnailSliderStyle = {
     display: 'flex',
-    gap: '10px',
-    marginTop: '20px',
+    gap: '4px',
+    marginTop: '10px',
     overflowX: 'auto', // 가로 스크롤 활성화
     padding: '5px 0',
     WebkitOverflowScrolling: 'touch', // iOS 부드러운 스크롤
@@ -132,11 +158,11 @@ const thumbnailSliderStyle = {
 
 // 썸네일 이미지 스타일
 const thumbnailImageStyle = {
-    width: '96px',
-    height: '96px',
+    width: '93px',
+    height: '115px',
     backgroundColor: '#e0e0e0', // 로딩 전 임시 색상
     objectFit: 'cover',
-    borderRadius: '8px',
+    // borderRadius: '8px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
     flexShrink: 0, // 찌그러짐 방지
