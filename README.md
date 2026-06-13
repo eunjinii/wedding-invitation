@@ -54,6 +54,13 @@ REACT_APP_FIREBASE_APP_ID=your_app_id
 npm start
 ```
 
+### 5.Production Build
+
+```bash
+npm run build
+
+```
+
 Open http://localhost:3000 to view it in the browser.
 
 ## Contact
