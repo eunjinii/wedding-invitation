@@ -1,16 +1,20 @@
 import React, { useState, useRef } from 'react';
 
 const Gallery = () => {
-    // 1. 임시 이미지 데이터 (나중에 실제 이미지 URL로 교체하세요)
-    const images = [
-        { id: 1, src: 'https://via.placeholder.com/600x800/ffcccc/ffffff?text=Wedding+Photo+1', alt: '웨딩 사진 1' },
-        { id: 2, src: 'https://via.placeholder.com/600x800/ccffcc/ffffff?text=Wedding+Photo+2', alt: '웨딩 사진 2' },
-        { id: 3, src: 'https://via.placeholder.com/600x800/ccccff/ffffff?text=Wedding+Photo+3', alt: '웨딩 사진 3' },
-        { id: 4, src: 'https://via.placeholder.com/600x800/ffedcc/ffffff?text=Wedding+Photo+4', alt: '웨딩 사진 4' },
-        { id: 5, src: 'https://via.placeholder.com/600x800/cceffd/ffffff?text=Wedding+Photo+5', alt: '웨딩 사진 5' },
-        { id: 6, src: 'https://via.placeholder.com/600x800/cceffd/ffffff?text=Wedding+Photo+6', alt: '웨딩 사진 6' },
-        { id: 7, src: 'https://via.placeholder.com/600x800/cceffd/ffffff?text=Wedding+Photo+7', alt: '웨딩 사진 7' },
+    // 1. 실제 gallery 폴더에 올리신 이미지 파일명 리스트
+    const imageNames = [
+        "NSH_0133.png", "NSH_0338.png", "NSH_0425.png", "NSH_0594.png",
+        "NSH_0714.png", "NSH_0786.png", "NSH_1057.png", "NSH_1103.png",
+        "NSH_1255.png", "NSH_1495.png", "NSH_1518.png", "NSH_1589.png",
+        "NSH_1835.png", "NSH_2081.png", "NSH_2257.png", "NSH_2319.png",
+        "NSH_2765.png", "NSH_2896.png"
     ];
+
+    // 2. 파일명 리스트를 컴포넌트가 인식할 수 있는 src 경로 데이터로 변환
+    const images = imageNames.map((name, index) => ({
+        id: index + 1,
+        src: `${process.env.PUBLIC_URL}/images/gallery/${name}`
+    }));
 
     const [currentIndex, setCurrentIndex] = useState(0); // 현재 보여주는 이미지 인덱스
     const thumbnailRef = useRef(null); // 썸네일 스크롤 제어용
