@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/wedding-invitation/static/css/main.b39e74ab.css",
-    "main.js": "/wedding-invitation/static/js/main.b526dcef.js",
+    "main.js": "/wedding-invitation/static/js/main.21c8c20a.js",
     "static/js/453.724d4d4c.chunk.js": "/wedding-invitation/static/js/453.724d4d4c.chunk.js",
     "static/media/GowunBatang-Regular.ttf": "/wedding-invitation/static/media/GowunBatang-Regular.6b610213de9843984042.ttf",
     "static/media/GowunBatang-Bold.ttf": "/wedding-invitation/static/media/GowunBatang-Bold.82d915ec1fdc538849a6.ttf",
     "index.html": "/wedding-invitation/index.html",
     "main.b39e74ab.css.map": "/wedding-invitation/static/css/main.b39e74ab.css.map",
-    "main.b526dcef.js.map": "/wedding-invitation/static/js/main.b526dcef.js.map",
+    "main.21c8c20a.js.map": "/wedding-invitation/static/js/main.21c8c20a.js.map",
     "453.724d4d4c.chunk.js.map": "/wedding-invitation/static/js/453.724d4d4c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b39e74ab.css",
-    "static/js/main.b526dcef.js"
+    "static/js/main.21c8c20a.js"
   ]
 }
