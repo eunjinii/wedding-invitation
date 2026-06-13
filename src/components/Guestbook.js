@@ -98,7 +98,7 @@ const Guestbook = () => {
                             onClick={() => paginate(num)}
                             style={{
                                 ...pageNumberStyle,
-                                color: currentPage === num ? '#1a1a1a' : '#ccc',
+                                color: currentPage === num ? '#1a1a1a' : '#555',
                                 fontWeight: currentPage === num ? 'bold' : 'normal'
                             }}
                         > {num} </button>
@@ -143,11 +143,15 @@ const Guestbook = () => {
     );
 };
 
-// --- 스타일 객체 모음 ---
-
 const containerStyle = {
+    width: '100%',
+    maxWidth: '480px',
+    margin: '0 auto',
     padding: '60px 20px',
-    maxWidth: '480px'
+    boxSizing: 'border-box',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
 };
 
 const titleContainerStyle = {
@@ -155,8 +159,9 @@ const titleContainerStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    textAlign: 'center'
-}
+    textAlign: 'center',
+    width: '100%'
+};
 
 const titleStyle = {
     fontSize: '1rem',
@@ -178,11 +183,8 @@ const formStyle = {
     display: 'flex',
     flexDirection: 'column',
     gap: '8px',
-    // padding: '15px',
+    marginTop: '20px',
     backgroundColor: '#fdfdfd',
-    // border: '1px solid #eee',
-    // borderRadius: '12px',
-    // boxSizing: 'border-box',
     width: '100%'
 };
 
@@ -247,9 +249,12 @@ const submitStyle = {
 };
 
 const listContainerStyle = {
+    width: '100%',
     textAlign: 'left',
-    marginTop: '30px',
-    minHeight: '300px'
+    minHeight: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#fdfdfd',
 };
 
 const messageBoxStyle = {
@@ -300,7 +305,7 @@ const pageNumberStyle = {
     border: 'none',
     cursor: 'pointer',
     fontSize: '0.8rem',
-    padding: '4px 8px'
+    padding: '4px 12px'
 };
 
 const pageArrowStyle = {

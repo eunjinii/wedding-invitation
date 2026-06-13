@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 
 const Gallery = () => {
-    // 1. 실제 gallery 폴더에 올리신 이미지 파일명 리스트
     const imageNames = [
         "NSH_0133.png", "NSH_0338.png", "NSH_0425.png", "NSH_0594.png",
         "NSH_0714.png", "NSH_0786.png", "NSH_1057.png", "NSH_1103.png",
@@ -10,7 +9,6 @@ const Gallery = () => {
         "NSH_2765.png", "NSH_2896.png"
     ];
 
-    // 2. 파일명 리스트를 컴포넌트가 인식할 수 있는 src 경로 데이터로 변환
     const images = imageNames.map((name, index) => ({
         id: index + 1,
         src: `${process.env.PUBLIC_URL}/images/gallery/${name}`
@@ -19,7 +17,6 @@ const Gallery = () => {
     const [currentIndex, setCurrentIndex] = useState(0); // 현재 보여주는 이미지 인덱스
     const thumbnailRef = useRef(null); // 썸네일 스크롤 제어용
 
-    // 이전/다음 이미지로 이동하는 함수
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
     };
@@ -28,7 +25,6 @@ const Gallery = () => {
         setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     };
 
-    // 썸네일 클릭 시 해당 이미지로 이동
     const handleThumbnailClick = (index) => {
         setCurrentIndex(index);
     };
@@ -41,11 +37,9 @@ const Gallery = () => {
             </div>
             {/* 📸 2. 대표 이미지 (메인 뷰어) */}
             <div style={mainViewerStyle}>
-                {/* 좌우 네비게이션 버튼 (모바일에서도 터치 가능하도록 큼직하게) */}
                 <button onClick={handlePrev} style={{ ...navBtnStyle, left: '10px' }}>&#10094;</button>
                 <button onClick={handleNext} style={{ ...navBtnStyle, right: '10px' }}>&#10095;</button>
 
-                {/* 현재 이미지 표시 (부드러운 페이드 효과 추가) */}
                 <img
                     key={images[currentIndex].id} // key를 바꿔주어야 애니메이션이 작동함
                     src={images[currentIndex].src}
@@ -64,7 +58,7 @@ const Gallery = () => {
                         onClick={() => handleThumbnailClick(index)}
                         style={{
                             ...thumbnailImageStyle,
-                            // 현재 선택된 썸네일에 하이라이트 효과
+
                             border: currentIndex === index ? '2px solid #ff4d4d' : '2px solid transparent',
                             opacity: currentIndex === index ? 1 : 0.6
                         }}
@@ -99,7 +93,6 @@ const titleStyle = {
     fontSize: '1rem',
     fontWeight: 'bold',
     color: '#ff4d4d',
-    // marginBottom: '10px',
     letterSpacing: '2px'
 };
 
@@ -114,21 +107,23 @@ const verticalLineStyle = {
 const mainViewerStyle = {
     position: 'relative',
     width: '100%',
-    maxWidth: '500px', // PC에서도 너무 커지지 않게 제한
+    maxWidth: '500px',
     margin: '0 auto',
-    aspectRatio: '3 / 4',
+    height: '500px',
     overflow: 'hidden',
-    // borderRadius: '15px',
-    // boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-    backgroundColor: '#eee', // 로딩 전 임시 색상
+    backgroundColor: '#fafafa',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
 };
 
-// 메인 이미지 스타일 (부드러운 전환 효과)
 const mainImageStyle = {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover', // 이미지가 꽉 차게 (비율 유지하며 자름)
-    animation: 'fadeIn 0.5s ease', // 페이드인 애니메이션
+    maxWidth: '100%',
+    maxHeight: '100%',
+    width: 'auto',
+    height: 'auto',
+    objectFit: 'contain',
+    animation: 'fadeIn 0.5s ease',
 };
 
 // 네비게이션 버튼 스타일 (반투명 원형)
@@ -150,19 +145,20 @@ const navBtnStyle = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    WebkitTapHighlightColor: 'transparent' // 모바일 터치 하이라이트 제거
+    WebkitTapHighlightColor: 'transparent'
 };
 
-// 썸네일 슬라이더 컨테이너 (가로 스크롤 허용)
 const thumbnailSliderStyle = {
     display: 'flex',
     gap: '4px',
     marginTop: '10px',
-    overflowX: 'auto', // 가로 스크롤 활성화
+    width: '100%',
+    maxWidth: '500px',
+    margin: '0 auto',
+    overflowX: 'auto',
     padding: '5px 0',
-    WebkitOverflowScrolling: 'touch', // iOS 부드러운 스크롤
-    msOverflowStyle: 'none', // IE 스크롤바 숨기기
-    scrollbarWidth: 'none', // 파이어폭스 스크롤바 숨기기
+    WebkitOverflowScrolling: 'touch',
+    scrollbarWidth: 'none',
 };
 
 // 썸네일 이미지 스타일
