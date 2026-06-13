@@ -16,7 +16,7 @@ const Header = () => {
                     {/* B. 아치형 텍스트 */}
                     <text style={archTextStyle}>
                         <textPath href="#textArchPath" startOffset="50%" textAnchor="middle">
-                            SAVE THE DAY
+                            SAVE THE DATE
                         </textPath>
                     </text>
                 </svg>
