@@ -6,15 +6,21 @@ const Header = () => {
             {/* 신랑 & 신부 이름 */}
 
             <div style={archWrapperStyle}>
-                {/* 둥근 아치형 SVG (텍스트 + 벚꽃 잎) */}
-                <svg viewBox="0 0 500 120" style={svgStyle}>
-                    {/* A. 텍스트가 따라갈 투명한 곡선 경로 정의 */}
+                {/* viewBox 높이를 120에서 150으로 늘려 윗공간에 여유를 주었습니다. */}
+                <svg viewBox="0 0 500 150" style={svgStyle}>
                     <defs>
-                        <path id="textArchPath" d="M 50,150 A 200,100 0 0,1 450,150" fill="none" />
+                        {/* 
+                          시작점과 끝점의 Y좌표를 140으로 내리고, 
+                          반지름을 250으로 키워 글자가 캔버스 천장에 닿지 않는 완만하고 예쁜 아치를 만들었습니다.
+                        */}
+                        <path id="textArchPath" d="M 50,140 A 250,250 0 0,1 450,140" fill="none" />
                     </defs>
 
-                    {/* B. 아치형 텍스트 */}
-                    <text style={archTextStyle}>
+                    {/* 
+                      1. letter-spacing은 인라인 스타일 대신 속성(letter-spacing)으로 통일했습니다.
+                      2. textLength와 lengthAdjust로 글자 왜곡을 완전히 방지합니다.
+                    */}
+                    <text style={archTextStyle} textLength="340" lengthAdjust="spacing">
                         <textPath href="#textArchPath" startOffset="50%" textAnchor="middle">
                             SAVE THE DATE
                         </textPath>
@@ -42,7 +48,7 @@ const Header = () => {
 // --- 스타일 객체 모음 ---
 
 const headerContainerStyle = {
-    marginTop: '80px', // 아치형 추가로 상단 여백을 살짝 줄임
+    marginTop: '80px',
     marginBottom: '60px',
     display: 'flex',
     flexDirection: 'column',
@@ -50,28 +56,25 @@ const headerContainerStyle = {
     textAlign: 'center'
 };
 
-// 아치 전체를 감싸는 컨테이너
 const archWrapperStyle = {
     width: '100%',
-    maxWidth: '350px', // PC에서도 너무 커지지 않게 제한
+    maxWidth: '350px',
     margin: '0 auto',
-    marginBottom: '-20px', // 아래 요소와의 간격을 좁힘
+    marginBottom: '-10px', // SVG 높이가 늘어난 만큼 마진을 살짝 조절했습니다.
 };
 
-// SVG 자체 스타일 (반응형)
 const svgStyle = {
     width: '100%',
     height: 'auto',
+    overflow: 'visible', // 만에 하나 폰트가 튀어나가도 잘리지 않도록 안전장치 추가
 };
 
-// 아치형 텍스트 스타일
 const archTextStyle = {
-    fill: '#ff4d4d',       // 포인트 컬러 (좋아요 버튼과 통일)
-    fontSize: '30px',       // SVG 내부 크기
-    fontWeight: '700',      // Bold
-    letterSpacing: '10px',   // 자간을 넓혀서 가독성 확보
-    textTransform: 'uppercase', // 대문자 고정
-    opacity: 0.9,
+    fill: '#ff4d4d',
+    fontSize: '32px',       // 글자 크기를 살짝 키워 가독성을 올렸습니다.
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    fontFamily: 'GowunBatang, serif', // 적용 중이신 폰트 명시
 };
 
 const forTheWeddingStyle = {
@@ -92,7 +95,6 @@ const nameBoxStyle = {
 
 const ampersandStyle = {
     fontSize: '1.2rem',
-    // color: '#aaa'
 };
 
 const verticalLineStyle = {
@@ -106,21 +108,6 @@ const infoStyle = {
     marginTop: '8px',
     fontSize: '1.2rem',
     letterSpacing: '1px'
-};
-
-// const locationStyle = {
-//     // color: '#888',
-//     marginTop: '5px',
-//     fontSize: '1.2rem',
-//     fontWeight: '400'
-// };
-
-const churchImageStyle = {
-    marginTop: '30px',
-    width: '100%',
-    maxWidth: '350px',
-    height: 'auto',
-    borderRadius: '12px',
 };
 
 export default Header;

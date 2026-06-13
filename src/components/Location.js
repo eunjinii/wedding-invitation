@@ -21,7 +21,7 @@ const Location = () => {
             {/* 성당 정보 */}
             <div style={infoBoxStyle}>
                 <h3 style={infoStyle}>2026년 08월 22일 토요일 오후 12시</h3>
-                <h3 style={infoStyle}>논현2동 성당</h3>
+                <h3 style={infoStyle}>논현2동성당</h3>
                 <p style={addressStyle}><button onClick={handleCopyAddress}>
                     <span style={{ color: '#333', textDecoration: 'none' }}>📋 {address}</span>
                 </button></p>
@@ -131,7 +131,7 @@ const infoStyle = {
     fontSize: '1.2rem',
     fontWeight: '700',
     color: '#333',
-    margin: '0 0 12px 0'
+    margin: '0 0 16px 0'
 };
 
 const addressStyle = {
@@ -159,19 +159,17 @@ const subButtonStyle = {
 
 const mapImageContainerStyle = {
     width: '100%',
-    maxWidth: '450px',
-    height: '250px',
+    maxWidth: '500px',
     backgroundColor: '#f5f5f5',
-    borderRadius: '12px',
-    // overflow: 'hidden',
-    marginBottom: '20px',
-    // border: '1px solid #eee'
+    borderRadius: '8px',
+    overflow: 'hidden',
+    marginBottom: '25px',
 };
 
 const mapImageStyle = {
     width: '100%',
-    height: '100%',
-    objectFit: 'cover'
+    height: 'auto',
+    display: 'block'
 };
 
 const naviButtonGroupStyle = {
