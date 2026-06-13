@@ -6,20 +6,10 @@ const Header = () => {
             {/* 신랑 & 신부 이름 */}
 
             <div style={archWrapperStyle}>
-                {/* viewBox 높이를 120에서 150으로 늘려 윗공간에 여유를 주었습니다. */}
-                <svg viewBox="0 0 500 150" style={svgStyle}>
+                <svg viewBox="0 0 500 120" style={svgStyle}>
                     <defs>
-                        {/* 
-                          시작점과 끝점의 Y좌표를 140으로 내리고, 
-                          반지름을 250으로 키워 글자가 캔버스 천장에 닿지 않는 완만하고 예쁜 아치를 만들었습니다.
-                        */}
                         <path id="textArchPath" d="M 50,140 A 250,250 0 0,1 450,140" fill="none" />
                     </defs>
-
-                    {/* 
-                      1. letter-spacing은 인라인 스타일 대신 속성(letter-spacing)으로 통일했습니다.
-                      2. textLength와 lengthAdjust로 글자 왜곡을 완전히 방지합니다.
-                    */}
                     <text style={archTextStyle} textLength="340" lengthAdjust="spacing">
                         <textPath href="#textArchPath" startOffset="50%" textAnchor="middle">
                             SAVE THE DATE
@@ -40,7 +30,7 @@ const Header = () => {
 
             {/* 일시 및 장소 정보 */}
             <p style={infoStyle}>2026년 08월 22일 토요일 오후 12시</p>
-            <p style={infoStyle}>서울 논현2동성당</p>
+            <p style={infoStyle}>논현2동성당</p>
         </header>
     );
 };
@@ -80,7 +70,7 @@ const archTextStyle = {
 const forTheWeddingStyle = {
     fontSize: '0.9rem',
     color: '#888',
-    marginBottom: '10px'
+    marginBottom: '30px'
 };
 
 const titleStyle = {

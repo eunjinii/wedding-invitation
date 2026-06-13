@@ -23,10 +23,10 @@ const Location = () => {
                 <h3 style={infoStyle}>2026년 08월 22일 토요일 오후 12시</h3>
                 <h3 style={infoStyle}>논현2동성당</h3>
                 <p style={addressStyle}><button onClick={handleCopyAddress}>
-                    <span style={{ color: '#333', textDecoration: 'none' }}>📋 {address}</span>
+                    <span style={{ color: '#333', textDecoration: 'none' }}>{address}</span>
                 </button></p>
                 <p style={addressStyle}><a href={`tel:${phone}`} >
-                    📞 {phone}
+                    {phone}
                 </a></p>
             </div>
 
@@ -39,7 +39,7 @@ const Location = () => {
             </div>
 
             {/* 길찾기 앱 버튼들 */}
-            <div style={naviButtonGroupStyle}>
+            {/*             <div style={naviButtonGroupStyle}>
                 <a href="https://map.naver.com/v5/search/논현2동성당" target="_blank" rel="noreferrer" style={naviButtonStyle}>
                     <span style={{ color: '#03C75A' }}>●</span> 네이버지도
                 </a>
@@ -49,7 +49,7 @@ const Location = () => {
                 <a href="https://surl.tmap.co.kr/..." target="_blank" rel="noreferrer" style={naviButtonStyle}>
                     <span style={{ color: '#FF0000' }}>●</span> 티맵
                 </a>
-            </div>
+            </div> */}
 
             <div style={transportContainerStyle}>
                 {/* 지하철 */}
