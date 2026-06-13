@@ -5,14 +5,14 @@ const Contact = () => {
 
     const groomSide = [
         { role: '신랑', name: '배준식', phone: '010-9119-9596' },
-        { role: '신랑 아버지', name: '배연도', phone: '010-0000-0000' },
-        { role: '신랑 어머니', name: '이금자', phone: '010-0000-0000' },
+        { role: '신랑 아버지', name: '배연도', phone: '010-5495-9596' },
+        { role: '신랑 어머니', name: '이금자', phone: '010-8818-9031' },
     ];
 
     const brideSide = [
         { role: '신부', name: '이은진', phone: '010-5415-1172' },
-        { role: '신부 아버지', name: '이상정', phone: '010-0000-0000' },
-        { role: '신부 어머니', name: '김영숙', phone: '010-0000-0000' },
+        { role: '신부 아버지', name: '이상정', phone: '010-3729-2548' },
+        { role: '신부 어머니', name: '김영숙', phone: '010-8774-0791' },
     ];
 
     const ContactRow = ({ person }) => (
@@ -32,7 +32,7 @@ const Contact = () => {
         <section style={containerStyle}>
             {/* 메인 버튼 */}
             <button onClick={() => setIsOpen(true)} style={mainBtnStyle}>
-                연락하기
+                축하 연락처
             </button>
 
             {/* 모달 오버레이 */}
