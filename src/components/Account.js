@@ -9,18 +9,18 @@ const Account = () => {
             title: "신랑측",
             color: "#fff",
             accounts: [
-                { relation: "신랑", name: "배준식", bank: "국민은행", number: "123-456-789012" },
-                { relation: "아버지", name: "배연도", bank: "신한은행", number: "987-654-321098" },
-                { relation: "어머니", name: "이금자", bank: "우리은행", number: "111-222-333333" },
+                { relation: "신랑", name: "배준식", bank: "경남은행", number: "540-21-0820058" },
+                { relation: "아버지", name: "배연도", bank: "국민은행", number: "419825-91-122484" },
+                { relation: "어머니", name: "이금자", bank: "국민은행", number: "811-24-0104-071" },
             ]
         },
         bride: {
             title: "신부측",
             color: "#fff",
             accounts: [
-                { relation: "신부", name: "이은진", bank: "우리은행", number: "1002-881-121526" },
-                { relation: "아버지", name: "이상정", bank: "농협은행", number: "444-5555-6666-77" },
-                { relation: "어머니", name: "김영숙", bank: "우리은행", number: "888-999-000000" },
+                { relation: "신부", name: "이은진", bank: "신한은행", number: "110-423-553456" },
+                { relation: "아버지", name: "이상정", bank: "신한은행", number: "305-04-056583" },
+                { relation: "어머니", name: "김영숙", bank: "우리은행", number: "307-08-261562" },
             ]
         }
     };

@@ -12,9 +12,9 @@ const Invitation = () => {
 
             {/* 메인 문구 */}
             <div style={contentBoxStyle}>
-                <p style={paragraphStyle}>싱그러운 여름 향기 가득한 날,</p>
-                <p style={paragraphStyle}>저희 두 사람이 사랑과 신뢰로</p>
-                <p style={paragraphStyle}>인생의 새로운 출발을 하려 합니다.</p>
+                <p style={paragraphStyle}>우연처럼 다가온 인연이</p>
+                <p style={paragraphStyle}>서로의 삶에 스며들어</p>
+                <p style={paragraphStyle}>부부로서의 연을 맽고자 합니다.</p>
                 <br />
                 <p style={paragraphStyle}>그 시작의 순간에 함께하시어</p>
                 <p style={paragraphStyle}>따뜻한 축복과 격려를 나누어 주시면</p>
@@ -25,12 +25,12 @@ const Invitation = () => {
             <div style={familyBoxStyle}>
                 <div style={familyRowStyle}>
                     <span style={parentStyle}>배연도 · 이금자</span>
-                    <span style={relationStyle}>의 장남</span>
+                    <span style={relationStyle}>의 아들</span>
                     <span style={nameStyle}>준식</span>
                 </div>
                 <div style={familyRowStyle}>
                     <span style={parentStyle}>이상정 · 김영숙</span>
-                    <span style={relationStyle}>의 차녀</span>
+                    <span style={relationStyle}>의 딸</span>
                     <span style={nameStyle}>은진</span>
                 </div>
             </div>

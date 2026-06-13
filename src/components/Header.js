@@ -34,7 +34,7 @@ const Header = () => {
 
             {/* 일시 및 장소 정보 */}
             <p style={infoStyle}>2026년 08월 22일 토요일 오후 12시</p>
-            <p style={infoStyle}>논현2동 성당</p>
+            <p style={infoStyle}>서울 논현2동성당</p>
         </header>
     );
 };
