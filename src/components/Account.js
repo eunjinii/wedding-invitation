@@ -6,8 +6,8 @@ const Account = () => {
 
     const accountData = {
         groom: {
-            title: "신랑측",
-            color: "#fff",
+            title: "신랑측 계좌번호",
+            color: "#777",
             accounts: [
                 { relation: "신랑", name: "배준식", bank: "경남은행", number: "540-21-0820058" },
                 { relation: "아버지", name: "배연도", bank: "국민은행", number: "419825-91-122484" },
@@ -15,8 +15,8 @@ const Account = () => {
             ]
         },
         bride: {
-            title: "신부측",
-            color: "#fff",
+            title: "신부측 계좌번호",
+            color: "#777",
             accounts: [
                 { relation: "신부", name: "이은진", bank: "신한은행", number: "110-423-553456" },
                 { relation: "아버지", name: "이상정", bank: "신한은행", number: "305-04-056583" },
@@ -40,17 +40,15 @@ const Account = () => {
     }, [showToast]);
     return (
         <div style={mainContainerStyle}>
-            {/* 타이틀 영역 */}
             <div style={titleContainerStyle}>
                 <div style={titleStyle}>Account</div>
                 <div style={verticalLineStyle}></div>
             </div>
 
-            {/* 상단 안내 문구: 폰트 사이즈와 행간 조절 */}
             <div style={introTextStyle}>
-                참석이 어려워 직접 축하를 전하지 못하는<br />
-                분들을 위해 계좌번호를 기재하였습니다.<br />
-                너그러운 마음으로 양해 부탁드립니다.
+                참석이 어려우신 분들을 위해<br />
+                마음을 전할 수 있는 곳을 안내해 드립니다.<br />
+                축복해 주셔서 감사합니다.
             </div>
 
             {/* 복사 알림 토스트 */}
@@ -75,7 +73,7 @@ const Account = () => {
                             <span style={{
                                 transition: 'transform 0.3s',
                                 transform: openSide === key ? 'rotate(180deg)' : 'rotate(0deg)',
-                                fontSize: '0.8rem', color: '#ccc'
+                                fontSize: '0.8rem', color: side.color
                             }}>▼</span>
                         </button>
 
@@ -121,15 +119,14 @@ const Account = () => {
 
 
 const containerStyle = {
-    borderRadius: '8px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
     overflow: 'hidden',
-    border: '1px solid #ddd',
-    // boxShadow: '0 2px 10px rgba(0,0,0,0.02)'
 };
 
 const headerStyle = {
     width: '100%',
-    padding: '16px 20px',
+    padding: '12px 20px',
     border: 'none',
     display: 'flex',
     justifyContent: 'space-between',
@@ -149,7 +146,7 @@ const titleContainerStyle = {
 const titleStyle = {
     fontSize: '1rem',
     fontWeight: 'bold',
-    color: '#ff4d4d',
+    color: '#16589A',
     marginBottom: '10px',
     letterSpacing: '2px'
 };
@@ -171,10 +168,10 @@ const accountRowStyle = {
 };
 
 const copyBtnStyle = {
-    padding: '6px 12px',
-    fontSize: '0.7rem',
+    padding: '6px 10px',
+    fontSize: '0.8rem',
     backgroundColor: '#f8f8f8',
-    color: '#666',
+    color: '#444',
     border: '1px solid #eee',
     borderRadius: '4px',
     cursor: 'pointer',
@@ -203,7 +200,7 @@ const mainContainerStyle = {
 
 const introTextStyle = {
     fontSize: '1rem',
-    color: '#333',
+    color: '#000',
     lineHeight: '2',
     marginTop: "10px",
     marginBottom: '35px',
@@ -248,7 +245,7 @@ const noticeTitleStyle = {
     margin: '12px 0',
     fontSize: '1.2rem',
     fontWeight: 'bold',
-    color: '#ff4d4d',
+    color: '#16589A',
 };
 
 const noticeDescStyle = {

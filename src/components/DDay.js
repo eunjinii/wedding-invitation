@@ -65,8 +65,9 @@ const DDay = () => {
 
 // --- 스타일링 ---
 const containerStyle = {
+    marginTop: '40px',
     textAlign: 'center',
-    padding: '20px 20px',
+    padding: '0 20px',
 };
 
 const timerContainerStyle = {

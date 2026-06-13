@@ -166,7 +166,7 @@ const titleContainerStyle = {
 const titleStyle = {
     fontSize: '1rem',
     fontWeight: 'bold',
-    color: '#ff4d4d',
+    color: '#16589A',
     marginBottom: '10px',
     letterSpacing: '2px'
 };
@@ -239,10 +239,10 @@ const checkboxStyle = {
 const submitStyle = {
     width: '100%',
     padding: '12px',
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#16589A',
     color: '#fff',
     border: 'none',
-    borderRadius: '6px',
+    borderRadius: '4px',
     cursor: 'pointer',
     fontWeight: 'bold',
     boxSizing: 'border-box'

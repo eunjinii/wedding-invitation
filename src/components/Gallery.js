@@ -2,10 +2,12 @@ import React, { useState, useRef } from 'react';
 
 const Gallery = () => {
     const imageNames = [
-        "NSH_0133.png", "NSH_0338.png", "NSH_0425.png", "NSH_0594.png",
-        "NSH_0714.png", "NSH_0786.png", "NSH_1057.png", "NSH_1103.png",
-        "NSH_1255.png", "NSH_1495.png", "NSH_1518.png", "NSH_1589.png",
-        "NSH_1835.png", "NSH_2081.png", "NSH_2257.png", "NSH_2319.png",
+
+        "NSH_0714.png", "NSH_0594.png", "NSH_0786.png", "NSH_1032.png", "NSH_1103.png",
+        "NSH_1255.png", "NSH_1495.png", "NSH_1589.png",
+        "NSH_1835.png", "NSH_2007.png", "NSH_2081.png", "NSH_2319.png",
+        "NSH_1518.png", "NSH_0338.png", "NSH_0197.png",
+        "NSH_0425.png", "NSH_0550.png",
         "NSH_2765.png", "NSH_2896.png"
     ];
 
@@ -59,7 +61,7 @@ const Gallery = () => {
                         style={{
                             ...thumbnailImageStyle,
 
-                            border: currentIndex === index ? '2px solid #ff4d4d' : '2px solid transparent',
+                            border: currentIndex === index ? '2px solid #16589A' : '2px solid transparent',
                             opacity: currentIndex === index ? 1 : 0.6
                         }}
                     />
@@ -92,7 +94,7 @@ const titleContainerStyle = {
 const titleStyle = {
     fontSize: '1rem',
     fontWeight: 'bold',
-    color: '#ff4d4d',
+    color: '#16589A',
     letterSpacing: '2px'
 };
 
@@ -132,7 +134,7 @@ const navBtnStyle = {
     top: '50%',
     transform: 'translateY(-50%)',
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    color: '#333',
+    color: '#aaa',
     border: 'none',
     width: '40px',
     height: '40px',

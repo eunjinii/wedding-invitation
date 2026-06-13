@@ -15,25 +15,26 @@ const Invitation = () => {
                 <p style={paragraphStyle}>우연처럼 다가온 인연이</p>
                 <p style={paragraphStyle}>서로의 삶에 스며들어</p>
                 <p style={paragraphStyle}>부부로서의 연을 맺고자 합니다.</p>
-                <br />
+                <div style={brStyle} />
                 <p style={paragraphStyle}>그 시작의 순간에 함께하시어</p>
                 <p style={paragraphStyle}>따뜻한 축복과 격려를 나누어 주시면</p>
                 <p style={paragraphStyle}>더없는 기쁨으로 간직하겠습니다.</p>
+                <div style={brStyle} />
+                <div style={familyBoxStyle}>
+                    <div style={familyRowStyle}>
+                        <span style={parentStyle}>배연도 · 이금자</span>
+                        <span style={relationStyle}>의 아들</span>
+                        <span style={nameStyle}>준식</span>
+                    </div>
+                    <div style={familyRowStyle}>
+                        <span style={parentStyle}>이상정 · 김영숙</span>
+                        <span style={relationStyle}>의 딸</span>
+                        <span style={nameStyle}>은진</span>
+                    </div>
+                </div>
             </div>
 
             {/* 혼주 및 신랑신부 정보 */}
-            <div style={familyBoxStyle}>
-                <div style={familyRowStyle}>
-                    <span style={parentStyle}>배연도 · 이금자</span>
-                    <span style={relationStyle}>의 아들</span>
-                    <span style={nameStyle}>준식</span>
-                </div>
-                <div style={familyRowStyle}>
-                    <span style={parentStyle}>이상정 · 김영숙</span>
-                    <span style={relationStyle}>의 딸</span>
-                    <span style={nameStyle}>은진</span>
-                </div>
-            </div>
             <Contact />
         </section>
     );
@@ -59,7 +60,7 @@ const titleContainerStyle = {
 const titleStyle = {
     fontSize: '1rem',
     fontWeight: 'bold',
-    color: '#ff4d4d',
+    color: '#16589A',
     marginBottom: '10px',
     letterSpacing: '2px'
 };
@@ -74,7 +75,7 @@ const verticalLineStyle = {
 
 const contentBoxStyle = {
     margin: '30px 0',
-    lineHeight: '2.2', // 행간을 넉넉히 주어 여유로운 느낌
+    lineHeight: '2.2',
 };
 
 const paragraphStyle = {
@@ -84,25 +85,27 @@ const paragraphStyle = {
     letterSpacing: '0.5px'
 };
 
+const brStyle = {
+    height: '30px'
+};
+
 const familyBoxStyle = {
     display: 'inline-block',
-    marginTop: '20px',
-    textAlign: 'left', // 이름 부분은 왼쪽 정렬이 더 정갈함
+    textAlign: 'left',
 };
 
 const familyRowStyle = {
     fontSize: '1.2rem',
-    marginBottom: '10px',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center', // 전체는 중앙
+    justifyContent: 'center',
     gap: '8px'
 };
 
 const parentStyle = {
     fontWeight: '400',
     color: '#333',
-    minWidth: '100px', // 부모님 성함 너비 고정으로 줄맞춤
+    minWidth: '100px',
     textAlign: 'right'
 };
 
@@ -112,7 +115,7 @@ const relationStyle = {
 };
 
 const nameStyle = {
-    fontWeight: 'bold', // 본인 이름 강조
+    fontWeight: 'bold',
     fontSize: '1.2rem',
     color: '#1a1a1a',
     minWidth: '50px'

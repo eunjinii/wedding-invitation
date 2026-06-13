@@ -41,7 +41,7 @@ const containerStyle = {
 
 const progressStyle = {
     width: '100%',
-    backgroundColor: '#ff4d4d', // 청첩장 메인 포인트 컬러와 통일
+    backgroundColor: '#16589A', // 청첩장 메인 포인트 컬러와 통일
     transition: 'height 0.1s ease-out' // 부드럽게 차오르는 애니메이션 효과
 };
 

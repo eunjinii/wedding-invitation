@@ -30,9 +30,8 @@ const Contact = () => {
 
     return (
         <section style={containerStyle}>
-            {/* 메인 버튼 */}
             <button onClick={() => setIsOpen(true)} style={mainBtnStyle}>
-                축하 연락처
+                축하 인사 전하기
             </button>
 
             {/* 모달 오버레이 */}
@@ -77,13 +76,11 @@ const containerStyle = {
 
 const mainBtnStyle = {
     padding: '12px 60px',
-    backgroundColor: '#fff',
-    border: '1px solid #eee',
-    borderRadius: '30px',
-    fontSize: '0.95rem',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    fontSize: '1rem',
     color: '#333',
     cursor: 'pointer',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
     letterSpacing: '1px'
 };
 
@@ -107,10 +104,12 @@ const closeXStyle = {
 const modalHeaderStyle = { padding: '40px 20px 20px' };
 
 const modalTitleStyle = {
-    fontSize: '1.3rem', color: '#ff4d4d', fontWeight: '400', marginBottom: '8px'
+    fontSize: '1.3rem',
+    color: '#16589A',
+    marginBottom: '8px'
 };
 
-const modalSubTitleStyle = { fontSize: '0.85rem', color: '#888' };
+const modalSubTitleStyle = { fontSize: '0.9rem', color: '#444' };
 
 const dividerStyle = { height: '1px', backgroundColor: '#eee', margin: '0 20px' };
 
@@ -122,9 +121,9 @@ const rowStyle = {
 
 const roleNameStyle = { display: 'flex', gap: '20px', alignItems: 'center' };
 
-const roleStyle = { fontSize: '0.85rem', color: '#888', width: '70px', textAlign: 'left' };
+const roleStyle = { fontSize: '0.9rem', color: '#444', width: '70px', textAlign: 'left' };
 
-const nameStyle = { fontSize: '1rem', color: '#333', fontWeight: '500' };
+const nameStyle = { fontSize: '1.1rem', color: '#333', fontWeight: 'bold' };
 
 const iconGroupStyle = { display: 'flex', gap: '15px' };
 
