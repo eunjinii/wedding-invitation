@@ -34,7 +34,7 @@ const Gallery = () => {
     };
 
     return (
-        <div style={{ margin: '50px 0', padding: '0 20px', textAlign: 'center' }}>
+        <section style={containerStyle}>
             <div style={titleContainerStyle}>
                 <div style={titleStyle}>Gallery</div>
                 <div style={verticalLineStyle}></div>
@@ -75,15 +75,20 @@ const Gallery = () => {
             <p style={{ fontSize: '0.8rem', color: '#888', marginTop: '15px' }}>
                 {currentIndex + 1} / {images.length}
             </p>
-        </div>
+        </section>
     );
 };
 
-// 메인 뷰어 컨테이너 (상대 좌표 설정)
-
+const containerStyle = {
+    padding: '60px 20px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center'
+};
 
 const titleContainerStyle = {
-    marginBottom: '20px',
+    padding: '20px 20px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -94,7 +99,7 @@ const titleStyle = {
     fontSize: '1rem',
     fontWeight: 'bold',
     color: '#ff4d4d',
-    marginBottom: '10px',
+    // marginBottom: '10px',
     letterSpacing: '2px'
 };
 

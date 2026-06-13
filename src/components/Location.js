@@ -94,7 +94,6 @@ const Location = () => {
 
 const containerStyle = {
     padding: '60px 20px',
-    backgroundColor: '#fff',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

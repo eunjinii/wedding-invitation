@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header'; // 방금 만든 헤더 가져오기
+import ScrollProgress from './components/ScrollProgress';
+import Header from './components/Header';
 import DDay from './components/DDay';
 import Invitation from './components/Invitation';
 import Gallery from './components/Gallery';
@@ -9,17 +10,29 @@ import Account from './components/Account';
 import Guestbook from './components/Guestbook';
 import LikeButton from './components/LikeButton';
 import Footer from './components/Footer';
+import ComponentDivider from './components/ComponentDivider';
 
 function App() {
   return (
     <div className="App">
+      <ScrollProgress />
       <div className="container">
         <Header />
-        <DDay />
+
+        <ComponentDivider />
+
         <Invitation />
+        <ComponentDivider />
+
         <Gallery />
+        <ComponentDivider />
+
         <Location />
+        <ComponentDivider />
+
         <Account />
+        <ComponentDivider />
+
         <Guestbook />
         <LikeButton />
         <Footer />

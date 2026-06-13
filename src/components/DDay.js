@@ -65,11 +65,8 @@ const DDay = () => {
 
 // --- 스타일링 ---
 const containerStyle = {
-    // position: 'relative',
-    // maxWidth: '450px',
-    margin: '60px 0',
     textAlign: 'center',
-    padding: '0 20px',
+    padding: '20px 20px',
 };
 
 const timerContainerStyle = {
@@ -102,13 +99,6 @@ const colonStyle = {
     fontSize: '1.2rem',
     color: '#aaa',
     paddingBottom: '20px'
-};
-
-const descStyle = {
-    marginTop: '25px',
-    fontSize: '0.95rem',
-    color: '#555',
-    fontWeight: '400'
 };
 
 const weddingDayStyle = {

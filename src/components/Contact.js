@@ -29,7 +29,7 @@ const Contact = () => {
     );
 
     return (
-        <div style={containerStyle}>
+        <section style={containerStyle}>
             {/* 메인 버튼 */}
             <button onClick={() => setIsOpen(true)} style={mainBtnStyle}>
                 연락하기
@@ -64,13 +64,16 @@ const Contact = () => {
                     </div>
                 </div>
             )}
-        </div>
+        </section>
     );
 };
 
 // --- 스타일 객체 모음 ---
 
-const containerStyle = { margin: '40px 0', textAlign: 'center' };
+const containerStyle = {
+    padding: '20px 20px',
+    textAlign: 'center'
+};
 
 const mainBtnStyle = {
     padding: '12px 60px',

@@ -1,8 +1,9 @@
 import React from 'react';
+import DDay from './DDay';
 
 const Header = () => {
     return (
-        <header style={headerContainerStyle}>
+        <section style={containerStyle}>
             {/* 신랑 & 신부 이름 */}
 
             <div style={archWrapperStyle}>
@@ -31,15 +32,16 @@ const Header = () => {
             {/* 일시 및 장소 정보 */}
             <p style={infoStyle}>2026년 08월 22일 토요일 오후 12시</p>
             <p style={infoStyle}>논현2동성당</p>
-        </header>
+
+            <DDay />
+        </section>
     );
 };
 
 // --- 스타일 객체 모음 ---
 
-const headerContainerStyle = {
-    marginTop: '80px',
-    marginBottom: '60px',
+const containerStyle = {
+    padding: '60px 20px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

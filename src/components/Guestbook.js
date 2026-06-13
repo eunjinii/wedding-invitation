@@ -57,7 +57,7 @@ const Guestbook = () => {
     };
 
     return (
-        <div style={containerStyle}>
+        <section style={containerStyle}>
             <div style={titleContainerStyle}>
                 <div style={titleStyle}>Guestbook</div>
                 <div style={verticalLineStyle}></div>
@@ -139,15 +139,14 @@ const Guestbook = () => {
                 </div>
                 <button type="submit" style={submitStyle}>방명록 남기기</button>
             </form>
-        </div>
+        </section>
     );
 };
 
 // --- 스타일 객체 모음 ---
 
 const containerStyle = {
-    margin: '60px auto',
-    padding: '0 20px',
+    padding: '60px 20px',
     maxWidth: '480px'
 };
 
