@@ -85,7 +85,7 @@ const decorStyle = {
 };
 const contentBoxStyle = {
     margin: '30px 0',
-    lineHeight: '2',
+    lineHeight: '2.1',
 };
 
 const paragraphStyle = {

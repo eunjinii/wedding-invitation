@@ -183,7 +183,7 @@ const naviButtonStyle = {
     border: '1px solid #ccc',
     borderRadius: '4px',
     fontSize: '0.85rem',
-    color: '#333',
+    color: '#111',
     textDecoration: 'none',
     display: 'flex',
     alignItems: 'center',
