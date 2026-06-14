@@ -41,6 +41,7 @@ const Location = () => {
                     target="_blank"
                     rel="noreferrer"
                     style={naviButtonStyle}
+                    className='btn-click-event'
                 >
                     <img alt='naver map logo' src={`${process.env.PUBLIC_URL}/images/naver_map.png`} style={naviLogoStyle} />네이버지도
                 </a>
@@ -51,12 +52,17 @@ const Location = () => {
                     target="_blank"
                     rel="noreferrer"
                     style={naviButtonStyle}
+                    className='btn-click-event'
                 >
                     <img alt='kakao navi logo' src={`${process.env.PUBLIC_URL}/images/kakao_navi.png`} style={naviLogoStyle} />카카오내비
                 </a>
 
                 {/* 티맵: 모바일에서 티맵 앱을 직접 강제 실행시켜주는 딥링크 주소입니다 */}
-                <a href={"tmap://route?goalname=논현2동성당&goalx=127.0383722&goaly=37.5209531"} style={naviButtonStyle}>
+                <a
+                    href={"tmap://route?goalname=논현2동성당&goalx=127.0383722&goaly=37.5209531"}
+                    style={naviButtonStyle}
+                    className='btn-click-event'
+                >
                     <img alt='tmap navi logo' src={`${process.env.PUBLIC_URL}/images/tmap_navi.png`} style={naviLogoStyle} />티맵
                 </a>
             </div>
@@ -190,7 +196,7 @@ const naviButtonStyle = {
 const naviLogoStyle = {
     width: '20px',
     height: '20px',
-    // marginRight: '2px',
+    pointerEvents: 'none',
 }
 
 
