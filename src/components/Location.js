@@ -12,13 +12,11 @@ const Location = () => {
 
     return (
         <section style={containerStyle}>
-            {/* 타이틀 영역 (Invitation 스타일 계승) */}
             <div style={titleContainerStyle}>
                 <div style={titleStyle}>Location</div>
                 <div style={verticalLineStyle}></div>
             </div>
 
-            {/* 성당 정보 */}
             <div style={infoBoxStyle}>
                 <h3 style={infoStyle}>2026년 08월 22일 토요일 12시</h3>
                 <h3 style={infoStyle}>논현2동성당</h3>
@@ -31,22 +29,20 @@ const Location = () => {
 
             <div style={mapImageContainerStyle}>
                 <img
-                    src={process.env.PUBLIC_URL + "/images/map.jpg"}
+                    src={process.env.PUBLIC_URL + "/images/map.png"}
                     alt="논현2동 성당 지도"
                     style={mapImageStyle}
                 />
             </div>
 
-            {/* 길찾기 앱 버튼들 */}
             <div style={naviButtonGroupStyle}>
-                {/* 네이버지도: 장소 고유 ID(11738714)를 매핑해 정확한 위치로 이동합니다 */}
                 <a
                     href="https://map.naver.com/v5/entry/place/11738714"
                     target="_blank"
                     rel="noreferrer"
                     style={naviButtonStyle}
                 >
-                    <span style={{ color: '#03C75A' }}>●</span> 네이버지도
+                    <img alt='naver map logo' src={`${process.env.PUBLIC_URL}/images/naver_map.png`} style={naviLogoStyle} />네이버지도
                 </a>
 
                 {/* 카카오내비: 성당의 정확한 위경도 좌표를 심어 내비가 바로 찍히게 합니다 */}
@@ -56,17 +52,12 @@ const Location = () => {
                     rel="noreferrer"
                     style={naviButtonStyle}
                 >
-                    <span style={{ color: '#FEE500' }}>●</span> 카카오내비
+                    <img alt='kakao navi logo' src={`${process.env.PUBLIC_URL}/images/kakao_navi.png`} style={naviLogoStyle} />카카오내비
                 </a>
 
                 {/* 티맵: 모바일에서 티맵 앱을 직접 강제 실행시켜주는 딥링크 주소입니다 */}
-                <a
-                    href="https://apis.openapi.sk.com/tmap/app/routes?appKey=&name=논현2동성당&lon=127.036087&lat=37.520421"
-                    target="_blank"
-                    rel="noreferrer"
-                    style={naviButtonStyle}
-                >
-                    <span style={{ color: '#FF0000' }}>●</span> 티맵
+                <a href={"tmap://route?goalname=논현2동성당&goalx=127.0383722&goaly=37.5209531"} style={naviButtonStyle}>
+                    <img alt='tmap navi logo' src={`${process.env.PUBLIC_URL}/images/tmap_navi.png`} style={naviLogoStyle} />티맵
                 </a>
             </div>
 
@@ -76,7 +67,7 @@ const Location = () => {
                     <div style={descriptionStyle}>
                         <span style={subtitleStyle}>지하철</span><br />
                         <span style={subTextStyle}><strong>7호선·수인분당선 강남구청역</strong></span>
-                        <span style={subTextStyle}>3-1번 출구에서 영동고교 방면 도보 7분 (450m)</span>
+                        <span style={subTextStyle}><strong><u>3-1번 출구</u></strong>에서 영동고교 방면 도보 7분 (450m)</span>
                     </div>
                 </div>
 
@@ -159,27 +150,9 @@ const addressStyle = {
     textDecoration: 'underline'
 };
 
-const buttonGroupStyle = {
-    display: 'flex',
-    gap: '10px',
-    justifyContent: 'center'
-};
-
-const subButtonStyle = {
-    padding: '8px 15px',
-    border: '1px solid #eee',
-    borderRadius: '20px',
-    fontSize: '0.85rem',
-    color: '#888',
-    textDecoration: 'none',
-    backgroundColor: '#fafafa',
-    cursor: 'pointer'
-};
-
 const mapImageContainerStyle = {
     width: '100%',
     maxWidth: '500px',
-    backgroundColor: '#f5f5f5',
     borderRadius: '8px',
     overflow: 'hidden',
     marginBottom: '25px',
@@ -195,24 +168,32 @@ const naviButtonGroupStyle = {
     display: 'flex',
     width: '100%',
     maxWidth: '450px',
-    gap: '10px'
+    gap: '6px'
 };
 
 const naviButtonStyle = {
     flex: 1,
     padding: '12px 0',
-    border: '1px solid #eee',
-    borderRadius: '8px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
     fontSize: '0.85rem',
     color: '#333',
     textDecoration: 'none',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: '5px',
+    gap: '6px',
     backgroundColor: '#fff',
     boxShadow: '0 2px 4px rgba(0,0,0,0.02)'
 };
+
+const naviLogoStyle = {
+    width: '20px',
+    height: '20px',
+    // marginRight: '2px',
+}
+
+
 const transportContainerStyle = {
     width: '100%',
     maxWidth: '450px',

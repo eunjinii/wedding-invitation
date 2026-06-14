@@ -79,7 +79,7 @@ const verticalLineStyle = {
 };
 
 const decorStyle = {
-    width: '80%',
+    width: '70%',
     maxWidth: '280px',
     height: 'auto',
 };
@@ -96,7 +96,7 @@ const paragraphStyle = {
 };
 
 const brStyle = {
-    height: '30px'
+    height: '24px'
 };
 
 const familyBoxStyle = {
