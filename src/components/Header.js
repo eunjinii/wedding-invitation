@@ -1,6 +1,5 @@
 import React from 'react';
 import DDay from './DDay';
-import { mapRemove } from 'firebase/firestore/pipelines';
 
 const Header = () => {
     return (
@@ -32,9 +31,11 @@ const Header = () => {
                 <span style={nameBoxStyle}>이은진</span>
             </h1>
 
+            <p style={weMarryStyle}>결혼합니다.</p>
+
             <div style={infoContainer}>
-                <p style={infoStyle}>2026년 08월 22일 토요일 오후 12시</p>
-                <p style={infoStyle}>논현2동성당</p>
+                <div style={infoStyle}>2026년 08월 22일 토요일 12시 </div>
+                <div style={infoStyle}>논현2동성당</div>
             </div>
 
             <DDay />
@@ -62,7 +63,7 @@ const archDecorImageStyle = {
     top: '-40px',
     left: '50%',
     transform: 'translateX(-50%)',
-    width: '120vw',
+    width: '115vw',
     maxWidth: '550px',
     height: 'auto',
     zIndex: 1,
@@ -92,15 +93,16 @@ const archTextStyle = {
 
 // for the wedding of 텍스트 스타일
 const forTheWeddingContainer = {
-    marginTop: '-10px',
-    fontSize: '0.9rem',
+    marginTop: '6px',
+    fontSize: '0.8rem',
     color: '#888',
+    letterSpacing: '5px',
 };
 
 
 // =============== 3. 신랑 & 신부 이름 상자
 const nameBoxContainer = {
-    marginTop: '20px',
+    marginTop: '58px',
     fontSize: '1.9rem',
     fontWeight: '300',
     letterSpacing: '4px',
@@ -113,9 +115,16 @@ const ampersandStyle = {
     fontSize: '1.2rem',
 };
 
+const weMarryStyle = {
+    marginTop: '8px',
+    fontSize: '1.2rem',
+    letterSpacing: '1px',
+    // color: '#888',
+};
+
 // =============== 4. 날짜 및 장소 정보
 const infoContainer = {
-    marginTop: '28px',
+    marginTop: '60px',
 
 }
 const infoStyle = {

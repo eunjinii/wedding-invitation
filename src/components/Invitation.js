@@ -10,7 +10,12 @@ const Invitation = () => {
                 <div style={verticalLineStyle}></div>
             </div>
 
-            {/* 메인 문구 */}
+            <img
+                src={`${process.env.PUBLIC_URL}/images/under-decor.png`}
+                alt='꽃 장식'
+                style={decorStyle}
+            />
+
             <div style={contentBoxStyle}>
                 <p style={paragraphStyle}>우연처럼 다가온 인연이</p>
                 <p style={paragraphStyle}>서로의 삶에 스며들어</p>
@@ -34,7 +39,7 @@ const Invitation = () => {
                 </div>
             </div>
 
-            {/* 혼주 및 신랑신부 정보 */}
+            {/* 혼주 및 신랑신부 연락처 */}
             <Contact />
         </section>
     );
@@ -73,16 +78,21 @@ const verticalLineStyle = {
     backgroundColor: "#ddd"
 };
 
+const decorStyle = {
+    width: '80%',
+    maxWidth: '280px',
+    height: 'auto',
+};
 const contentBoxStyle = {
     margin: '30px 0',
-    lineHeight: '2.2',
+    lineHeight: '2',
 };
 
 const paragraphStyle = {
     fontSize: '1.2rem',
     color: '#333',
     margin: '0',
-    letterSpacing: '0.5px'
+    // letterSpacing: '0.5px'
 };
 
 const brStyle = {

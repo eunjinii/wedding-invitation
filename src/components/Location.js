@@ -20,7 +20,7 @@ const Location = () => {
 
             {/* 성당 정보 */}
             <div style={infoBoxStyle}>
-                <h3 style={infoStyle}>2026년 08월 22일 토요일 오후 12시</h3>
+                <h3 style={infoStyle}>2026년 08월 22일 토요일 12시</h3>
                 <h3 style={infoStyle}>논현2동성당</h3>
                 <p><button style={addressStyle} onClick={handleCopyAddress}>{address}
                 </button></p>
