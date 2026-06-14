@@ -54,10 +54,10 @@ REACT_APP_FIREBASE_APP_ID=your_app_id
 npm start
 ```
 
-### 5.Production Build
+### 5.Production Deploy
 
 ```bash
-npm run build
+npm run Deploy
 
 ```
 
