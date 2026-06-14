@@ -1,5 +1,6 @@
 import React from 'react';
 import DDay from './DDay';
+import { mapRemove } from 'firebase/firestore/pipelines';
 
 const Header = () => {
     return (
@@ -62,7 +63,7 @@ const archDecorImageStyle = {
     left: '50%',
     transform: 'translateX(-50%)',
     width: '120vw',
-    maxWidth: 'none',
+    maxWidth: '550px',
     height: 'auto',
     zIndex: 1,
     filter: 'invert(27%) sepia(51%) saturate(3500%) hue-rotate(191deg) brightness(80%) contrast(140%)',
@@ -76,7 +77,7 @@ const svgStyle = {
     height: 'auto',
     margin: '0 auto',
     zIndex: 2,
-    marginTop: '100px',
+    marginTop: '130px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -92,6 +93,7 @@ const archTextStyle = {
 
 // for the wedding of 텍스트 스타일
 const forTheWeddingContainer = {
+    marginTop: '-10px',
     fontSize: '0.9rem',
     color: '#888',
 };
@@ -100,9 +102,9 @@ const forTheWeddingContainer = {
 // =============== 3. 신랑 & 신부 이름 상자
 const nameBoxContainer = {
     marginTop: '20px',
-    fontSize: '1.8rem',
+    fontSize: '1.9rem',
     fontWeight: '300',
-    letterSpacing: '3px',
+    letterSpacing: '4px',
 };
 const nameBoxStyle = {
     padding: '0 8px',
