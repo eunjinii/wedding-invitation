@@ -22,8 +22,7 @@ const Location = () => {
             <div style={infoBoxStyle}>
                 <h3 style={infoStyle}>2026년 08월 22일 토요일 오후 12시</h3>
                 <h3 style={infoStyle}>논현2동성당</h3>
-                <p style={addressStyle}><button onClick={handleCopyAddress}>
-                    <span style={{ color: '#333', textDecoration: 'none' }}>{address}</span>
+                <p><button style={addressStyle} onClick={handleCopyAddress}>{address}
                 </button></p>
                 <p style={addressStyle}><a href={`tel:${phone}`} >
                     {phone}
@@ -39,17 +38,37 @@ const Location = () => {
             </div>
 
             {/* 길찾기 앱 버튼들 */}
-            {/*             <div style={naviButtonGroupStyle}>
-                <a href="https://map.naver.com/v5/search/논현2동성당" target="_blank" rel="noreferrer" style={naviButtonStyle}>
+            <div style={naviButtonGroupStyle}>
+                {/* 네이버지도: 장소 고유 ID(11738714)를 매핑해 정확한 위치로 이동합니다 */}
+                <a
+                    href="https://map.naver.com/v5/entry/place/11738714"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={naviButtonStyle}
+                >
                     <span style={{ color: '#03C75A' }}>●</span> 네이버지도
                 </a>
-                <a href="https://map.kakao.com/link/to/논현2동성당,37.5204,127.0361" target="_blank" rel="noreferrer" style={naviButtonStyle}>
+
+                {/* 카카오내비: 성당의 정확한 위경도 좌표를 심어 내비가 바로 찍히게 합니다 */}
+                <a
+                    href="https://map.kakao.com/link/to/논현2동성당,37.520421,127.036087"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={naviButtonStyle}
+                >
                     <span style={{ color: '#FEE500' }}>●</span> 카카오내비
                 </a>
-                <a href="https://surl.tmap.co.kr/..." target="_blank" rel="noreferrer" style={naviButtonStyle}>
+
+                {/* 티맵: 모바일에서 티맵 앱을 직접 강제 실행시켜주는 딥링크 주소입니다 */}
+                <a
+                    href="https://apis.openapi.sk.com/tmap/app/routes?appKey=&name=논현2동성당&lon=127.036087&lat=37.520421"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={naviButtonStyle}
+                >
                     <span style={{ color: '#FF0000' }}>●</span> 티맵
                 </a>
-            </div> */}
+            </div>
 
             <div style={transportContainerStyle}>
                 {/* 지하철 */}
@@ -109,7 +128,7 @@ const titleContainerStyle = {
 const titleStyle = {
     fontSize: '1rem',
     fontWeight: 'bold',
-    color: '#ff4d4d',
+    color: '#16589A',
     marginBottom: '10px',
     letterSpacing: '2px'
 };
@@ -136,7 +155,8 @@ const infoStyle = {
 const addressStyle = {
     fontSize: '1rem',
     color: '#333',
-    marginBottom: '10px'
+    marginBottom: '10px',
+    textDecoration: 'underline'
 };
 
 const buttonGroupStyle = {
@@ -219,7 +239,7 @@ const descriptionStyle = {
 const subtitleStyle = {
     fontSize: '1.2rem',
     fontWeight: 'bold',
-    color: '#ff4d4d',
+    color: '#16589A',
 }
 const subTextStyle = {
     display: 'block',

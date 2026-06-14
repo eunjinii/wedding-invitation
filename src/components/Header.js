@@ -4,34 +4,37 @@ import DDay from './DDay';
 const Header = () => {
     return (
         <section style={containerStyle}>
-            {/* 신랑 & 신부 이름 */}
+            <img
+                style={archDecorImageStyle}
+                src={`${process.env.PUBLIC_URL}/images/arch-decor.png`}
+                alt="아치 장식"
+            />
 
-            <div style={archWrapperStyle}>
-                <svg viewBox="0 0 500 120" style={svgStyle}>
-                    <defs>
-                        <path id="textArchPath" d="M 50,140 A 250,250 0 0,1 450,140" fill="none" />
-                    </defs>
-                    <text style={archTextStyle} textLength="340" lengthAdjust="spacing">
-                        <textPath href="#textArchPath" startOffset="50%" textAnchor="middle">
-                            SAVE THE DATE
-                        </textPath>
-                    </text>
-                </svg>
-            </div>
+            <svg viewBox="0 0 500 100" style={svgStyle}>
+                <defs>
+                    <path id="textArchPath" d="M 110,160 A 140,140 0 0,1 390,160" fill="none" />
+                </defs>
+                <text style={archTextStyle} textLength="260" lengthAdjust="spacing">
+                    <textPath href="#textArchPath" startOffset="50%" textAnchor="middle">
+                        SAVE THE DATE
+                    </textPath>
+                </text>
+            </svg>
 
-            <p style={forTheWeddingStyle}>for the wedding of</p>
-            <h1 style={titleStyle}>
+            <p style={forTheWeddingContainer}>
+                for the wedding of
+            </p>
+
+            <h1 style={nameBoxContainer}>
                 <span style={nameBoxStyle}>배준식</span>
                 <span style={ampersandStyle}>&</span>
                 <span style={nameBoxStyle}>이은진</span>
             </h1>
 
-            {/* 중앙 세로 구분선 */}
-            <div style={verticalLineStyle}></div>
-
-            {/* 일시 및 장소 정보 */}
-            <p style={infoStyle}>2026년 08월 22일 토요일 오후 12시</p>
-            <p style={infoStyle}>논현2동성당</p>
+            <div style={infoContainer}>
+                <p style={infoStyle}>2026년 08월 22일 토요일 오후 12시</p>
+                <p style={infoStyle}>논현2동성당</p>
+            </div>
 
             <DDay />
         </section>
@@ -41,65 +44,84 @@ const Header = () => {
 // --- 스타일 객체 모음 ---
 
 const containerStyle = {
+    position: 'relative',
     padding: '60px 20px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    textAlign: 'center'
-};
-
-const archWrapperStyle = {
+    textAlign: 'center',
     width: '100%',
-    maxWidth: '350px',
-    margin: '0 auto',
-    marginBottom: '-10px', // SVG 높이가 늘어난 만큼 마진을 살짝 조절했습니다.
+    boxSizing: 'border-box',
+    overflow: 'hidden'
 };
 
+// 🌸 아치 데코 이미지 스타일 수정 (레이어 뒤로 밀기)
+const archDecorImageStyle = {
+    position: 'absolute',
+    top: '-40px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: '120vw',
+    maxWidth: 'none',
+    height: 'auto',
+    zIndex: 1,
+    filter: 'invert(27%) sepia(51%) saturate(3500%) hue-rotate(191deg) brightness(80%) contrast(140%)',
+    pointerEvents: 'none'
+};
+
+// SAVE THE DATE 텍스트가 들어갈 SVG 스타일
 const svgStyle = {
     width: '100%',
+    maxWidth: '350px',
     height: 'auto',
-    overflow: 'visible', // 만에 하나 폰트가 튀어나가도 잘리지 않도록 안전장치 추가
+    margin: '0 auto',
+    zIndex: 2,
+    marginTop: '100px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    overflow: 'visible',
 };
-
 const archTextStyle = {
-    fill: '#ff4d4d',
-    fontSize: '32px',       // 글자 크기를 살짝 키워 가독성을 올렸습니다.
+    fill: '#16589A',
+    fontSize: '32px',
     fontWeight: '700',
     textTransform: 'uppercase',
-    fontFamily: 'GowunBatang, serif', // 적용 중이신 폰트 명시
+    fontFamily: 'GowunBatang, serif',
 };
 
-const forTheWeddingStyle = {
+// for the wedding of 텍스트 스타일
+const forTheWeddingContainer = {
     fontSize: '0.9rem',
     color: '#888',
-    marginBottom: '30px'
 };
 
-const titleStyle = {
+
+// =============== 3. 신랑 & 신부 이름 상자
+const nameBoxContainer = {
+    marginTop: '20px',
     fontSize: '1.8rem',
     fontWeight: '300',
     letterSpacing: '3px',
 };
-
 const nameBoxStyle = {
-    padding: '5px 10px'
+    padding: '0 8px',
 };
 
 const ampersandStyle = {
     fontSize: '1.2rem',
 };
 
-const verticalLineStyle = {
-    margin: '50px 0',
-    width: '1px',
-    height: '80px',
-    backgroundColor: "#ddd"
-};
+// =============== 4. 날짜 및 장소 정보
+const infoContainer = {
+    marginTop: '28px',
 
+}
 const infoStyle = {
     marginTop: '8px',
     fontSize: '1.2rem',
-    letterSpacing: '1px'
+    letterSpacing: '1px',
+    padding: '0 20px',
 };
 
 export default Header;
