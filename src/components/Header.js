@@ -66,7 +66,6 @@ const archDecorImageStyle = {
     maxWidth: '550px',
     height: 'auto',
     zIndex: 1,
-    filter: 'invert(27%) sepia(51%) saturate(3500%) hue-rotate(191deg) brightness(80%) contrast(140%)',
     pointerEvents: 'none'
 };
 
