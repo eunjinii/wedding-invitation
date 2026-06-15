@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Gallery = () => {
     const imageNames = [
-
         "01.jpeg", "02.jpeg", "03.jpeg", "04.jpeg", "05.jpeg",
         "06.jpeg", "07.jpeg", "08.jpeg", "10.jpeg", "11.jpeg", "12.jpeg",
         "13.jpeg", "14.jpeg", "15.jpeg",
@@ -14,8 +13,11 @@ const Gallery = () => {
         src: `${process.env.PUBLIC_URL}/images/gallery/${name}`
     }));
 
-    const [currentIndex, setCurrentIndex] = useState(0); // 현재 보여주는 이미지 인덱스
-    const thumbnailRef = useRef(null); // 썸네일 스크롤 제어용
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const thumbnailRef = useRef(null);
+
+    // 💡 스와이프 구현을 위한 터치 시작 X좌표 저장용 useRef
+    const touchStartX = useRef(0);
 
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -29,28 +31,46 @@ const Gallery = () => {
         setCurrentIndex(index);
     };
 
+    // 💡 터치 시작 이벤트 핸들러
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+
+    // 💡 터치 종료 이벤트 핸들러 (어느 방향으로 밀었는지 계산)
+    const handleTouchEnd = (e) => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const diffX = touchStartX.current - touchEndX;
+
+        // 너무 미세하게 스친 건 오작동 방지를 위해 무시 (50px 이상 움직였을 때만 작동)
+        const swipeThreshold = 50;
+
+        if (diffX > swipeThreshold) {
+            // 오른쪽에서 왼쪽으로 밀었을 때 -> 다음 사진
+            handleNext();
+        } else if (diffX < -swipeThreshold) {
+            // 왼쪽에서 오른쪽으로 밀었을 때 -> 이전 사진
+            handlePrev();
+        }
+    };
+
+    // 썸네일 자동 스크롤 연동 기능 (기존 유지)
     useEffect(() => {
         if (!thumbnailRef.current) return;
-
-        // 💡 1. 썸네일 박스 안에서 현재 선택된 썸네일 이미지 엘리먼트를 찾습니다.
         const container = thumbnailRef.current;
         const selectedThumbnail = container.children[currentIndex];
 
         if (selectedThumbnail) {
-            // 💡 2. 선택된 썸네일이 슬라이더 박스 '가운데'로 오도록 스크롤 위치를 계산합니다.
             const containerWidth = container.offsetWidth;
             const thumbnailWidth = selectedThumbnail.offsetWidth;
             const thumbnailLeft = selectedThumbnail.offsetLeft;
-
             const targetScrollLeft = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
 
-            // 💡 3. 계산된 위치로 부드럽게(smooth) 스크롤 이동!
             container.scrollTo({
                 left: targetScrollLeft,
                 behavior: 'smooth'
             });
         }
-    }, [currentIndex]); // currentIndex가 바뀔 때마다 실행
+    }, [currentIndex]);
 
     return (
         <section style={containerStyle}>
@@ -58,15 +78,20 @@ const Gallery = () => {
                 <div style={titleStyle}>Gallery</div>
                 <div style={verticalLineStyle}></div>
             </div>
-            {/* 📸 2. 대표 이미지 (메인 뷰어) */}
-            <div style={mainViewerStyle}>
+
+            {/* 📸 2. 대표 이미지 (메인 뷰어 - 여기에 터치 이벤트 주입!) */}
+            <div
+                style={mainViewerStyle}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+            >
                 <button onClick={handlePrev} style={{ ...navBtnStyle, left: '10px' }}>&#10094;</button>
                 <button onClick={handleNext} style={{ ...navBtnStyle, right: '10px' }}>&#10095;</button>
 
                 <img
-                    key={images[currentIndex].id} // key를 바꿔주어야 애니메이션이 작동함
+                    key={images[currentIndex].id}
                     src={images[currentIndex].src}
-                    alt={images[currentIndex].alt}
+                    alt={`갤러리 메인 ${images[currentIndex].id}`}
                     style={mainImageStyle}
                 />
             </div>
@@ -81,7 +106,6 @@ const Gallery = () => {
                         onClick={() => handleThumbnailClick(index)}
                         style={{
                             ...thumbnailImageStyle,
-
                             border: currentIndex === index ? '2px solid #16589A' : '2px solid transparent',
                             opacity: currentIndex === index ? 1 : 0.6
                         }}
@@ -97,11 +121,13 @@ const Gallery = () => {
 };
 
 const containerStyle = {
-    padding: '60px 20px',
+    padding: '60px 0', // 💡 중요: 좌우 패딩을 0으로 만들어 사진이 꽉 찰 공간 확보
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    width: '100%',
+    overflowX: 'hidden' // 100vw 탈출 시 스크롤바 방지
 };
 
 const titleContainerStyle = {
@@ -129,15 +155,15 @@ const verticalLineStyle = {
 
 const mainViewerStyle = {
     position: 'relative',
-    width: '100%',
-    maxWidth: '500px',
-    margin: '0 auto',
-    height: '500px',
+    width: '100vw',               // 화면 가로 꽉 채우기
+    maxWidth: '500px',            // PC 마지노선은 유지 (없으면 PC에서 사진이 터짐)
+    aspectRatio: '3 / 4',         // 💡 정밀한 정사각 혹은 비율 유지 (500px 고정 대신 비율로 처리)
     overflow: 'hidden',
     backgroundColor: '#fafafa',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    touchAction: 'pan-y'
 };
 
 const mainImageStyle = {
