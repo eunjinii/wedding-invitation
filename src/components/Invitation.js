@@ -19,7 +19,7 @@ const Invitation = () => {
             <div style={contentBoxStyle}>
                 <p style={paragraphStyle}>우연처럼 다가온 인연이</p>
                 <p style={paragraphStyle}>서로의 삶에 스며들어</p>
-                <p style={paragraphStyle}>부부로서의 연을 맺고자 합니다.</p>
+                <p style={paragraphStyle}>부부로서의 연을 맺으려 합니다.</p>
                 <div style={brStyle} />
                 <p style={paragraphStyle}>그 시작의 순간에 함께하시어</p>
                 <p style={paragraphStyle}>따뜻한 축복과 격려를 나누어 주시면</p>

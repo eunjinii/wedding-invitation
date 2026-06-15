@@ -1,14 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Gallery = () => {
     const imageNames = [
 
-        "NSH_0714.png", "NSH_0594.png", "NSH_0786.png", "NSH_1032.png", "NSH_1103.png",
-        "NSH_1255.png", "NSH_1495.png", "NSH_1589.png",
-        "NSH_1835.png", "NSH_2007.png", "NSH_2081.png", "NSH_2319.png",
-        "NSH_1518.png", "NSH_0338.png", "NSH_0197.png",
-        "NSH_0425.png", "NSH_0550.png",
-        "NSH_2765.png", "NSH_2896.png"
+        "01.jpeg", "02.jpeg", "03.jpeg", "04.jpeg", "05.jpeg",
+        "06.jpeg", "07.jpeg", "08.jpeg", "10.jpeg", "11.jpeg", "12.jpeg",
+        "13.jpeg", "14.jpeg", "15.jpeg",
+        "16.jpeg", "18.jpeg", "19.jpeg"
     ];
 
     const images = imageNames.map((name, index) => ({
@@ -30,6 +28,29 @@ const Gallery = () => {
     const handleThumbnailClick = (index) => {
         setCurrentIndex(index);
     };
+
+    useEffect(() => {
+        if (!thumbnailRef.current) return;
+
+        // 💡 1. 썸네일 박스 안에서 현재 선택된 썸네일 이미지 엘리먼트를 찾습니다.
+        const container = thumbnailRef.current;
+        const selectedThumbnail = container.children[currentIndex];
+
+        if (selectedThumbnail) {
+            // 💡 2. 선택된 썸네일이 슬라이더 박스 '가운데'로 오도록 스크롤 위치를 계산합니다.
+            const containerWidth = container.offsetWidth;
+            const thumbnailWidth = selectedThumbnail.offsetWidth;
+            const thumbnailLeft = selectedThumbnail.offsetLeft;
+
+            const targetScrollLeft = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
+
+            // 💡 3. 계산된 위치로 부드럽게(smooth) 스크롤 이동!
+            container.scrollTo({
+                left: targetScrollLeft,
+                behavior: 'smooth'
+            });
+        }
+    }, [currentIndex]); // currentIndex가 바뀔 때마다 실행
 
     return (
         <section style={containerStyle}>
