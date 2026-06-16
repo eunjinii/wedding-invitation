@@ -8,29 +8,25 @@ const LikeButton = () => {
     const isDev = process.env.NODE_ENV === 'development';
     const statsRef = doc(db, isDev ? "stats_dev" : "stats", "hearts");
 
-    // Firestore 데이터 로드 및 실시간 감시 (구조 리팩토링)
     useEffect(() => {
-        let unsubscribe;
-
-        const setupLikes = async () => {
-            try {
-                const docSnap = await getDoc(statsRef);
-                if (!docSnap.exists()) {
+        // 💡 1. 비동기 getDoc/setDoc 없이, onSnapshot 자체로 문서 존재 여부까지 한 번에 실시간 감시합니다.
+        const unsubscribe = onSnapshot(statsRef, async (docSnap) => {
+            if (docSnap.exists()) {
+                // 문서가 있으면 정상적으로 상태 업데이트
+                setLikes(docSnap.data().count);
+            } else {
+                // 💡 2. 만약 최초 실행이라 데이터(문서)가 없다면 안전하게 0으로 초기화 생성
+                try {
                     await setDoc(statsRef, { count: 0 });
+                } catch (e) {
+                    console.error("초기 문서 생성 실패:", e);
                 }
-
-                // 💡 메모리 누수 방지: 외부 변수에 수신 대기 취소 함수를 할당합니다.
-                unsubscribe = onSnapshot(statsRef, (doc) => {
-                    if (doc.exists()) setLikes(doc.data().count);
-                });
-            } catch (e) {
-                console.error("Firestore 초기화 에러:", e);
             }
-        };
+        }, (error) => {
+            console.error("Firestore 실시간 감시 에러:", error);
+        });
 
-        setupLikes();
-
-        // 💡 컴포넌트 언마운트 시 안정적으로 실시간 감시 해제
+        // 💡 3. 동기적으로 확실하게 unsubscribe 함수를 리턴하여 리액트 생명주기를 맞춰줍니다.
         return () => {
             if (unsubscribe) unsubscribe();
         };
