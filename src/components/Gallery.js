@@ -53,16 +53,21 @@ const Gallery = () => {
         }
     };
 
-    // 썸네일 자동 스크롤 연동 기능 (기존 유지)
     useEffect(() => {
         if (!thumbnailRef.current) return;
+
         const container = thumbnailRef.current;
         const selectedThumbnail = container.children[currentIndex];
 
         if (selectedThumbnail) {
-            const containerWidth = container.offsetWidth;
-            const thumbnailWidth = selectedThumbnail.offsetWidth;
-            const thumbnailLeft = selectedThumbnail.offsetLeft;
+            // 💡 1. 썸네일 박스의 순수한 전체 너비와, 현재 선택된 썸네일의 너비를 구합니다.
+            const containerWidth = container.clientWidth; // offsetWidth 대신 실제 보이는 clientWidth 사용
+            const thumbnailWidth = selectedThumbnail.clientWidth;
+
+            // 💡 2. 부모 컨테이너 기준, 선택된 썸네일의 정확한 상대적 왼쪽 시작 위치를 계산합니다.
+            const thumbnailLeft = selectedThumbnail.offsetLeft - container.offsetLeft;
+
+            // 💡 3. 핵심 정렬 공식: 썸네일의 중심점을 부모 박스의 중심점에 완벽하게 일치시킵니다.
             const targetScrollLeft = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
 
             container.scrollTo({
@@ -70,7 +75,7 @@ const Gallery = () => {
                 behavior: 'smooth'
             });
         }
-    }, [currentIndex]);
+    }, [currentIndex]); // 현재 보고 있는 이미지 인덱스가 바뀔 때마다 정밀 조준 스크롤!
 
     return (
         <section style={containerStyle}>
