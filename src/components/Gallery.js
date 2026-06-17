@@ -160,15 +160,15 @@ const verticalLineStyle = {
 
 const mainViewerStyle = {
     position: 'relative',
-    width: '100vw',               // 화면 가로 꽉 채우기
-    maxWidth: '500px',            // PC 마지노선은 유지 (없으면 PC에서 사진이 터짐)
-    aspectRatio: '3 / 4',         // 💡 정밀한 정사각 혹은 비율 유지 (500px 고정 대신 비율로 처리)
+    width: '100vw',
+    maxWidth: '500px',
+    aspectRatio: '3 / 4',
     overflow: 'hidden',
     backgroundColor: '#fafafa',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    touchAction: 'pan-y'
+    touchAction: 'manipulation'
 };
 
 const mainImageStyle = {
@@ -178,6 +178,7 @@ const mainImageStyle = {
     height: 'auto',
     objectFit: 'contain',
     animation: 'fadeIn 0.5s ease',
+    WebkitUserDrag: 'none'
 };
 
 // 네비게이션 버튼 스타일 (반투명 원형)
