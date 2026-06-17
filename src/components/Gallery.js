@@ -16,8 +16,7 @@ const Gallery = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const thumbnailRef = useRef(null);
 
-    // 💡 스와이프 구현을 위한 터치 시작 X좌표 저장용 useRef
-    const touchStartX = useRef(0);
+    // 💡 스와이프 관련 touchStartX 변수 및 터치 핸들러(Start/End) 함수들을 완전히 걷어냈습니다!
 
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -31,28 +30,7 @@ const Gallery = () => {
         setCurrentIndex(index);
     };
 
-    // 💡 터치 시작 이벤트 핸들러
-    const handleTouchStart = (e) => {
-        touchStartX.current = e.touches[0].clientX;
-    };
-
-    // 💡 터치 종료 이벤트 핸들러 (어느 방향으로 밀었는지 계산)
-    const handleTouchEnd = (e) => {
-        const touchEndX = e.changedTouches[0].clientX;
-        const diffX = touchStartX.current - touchEndX;
-
-        // 너무 미세하게 스친 건 오작동 방지를 위해 무시 (50px 이상 움직였을 때만 작동)
-        const swipeThreshold = 50;
-
-        if (diffX > swipeThreshold) {
-            // 오른쪽에서 왼쪽으로 밀었을 때 -> 다음 사진
-            handleNext();
-        } else if (diffX < -swipeThreshold) {
-            // 왼쪽에서 오른쪽으로 밀었을 때 -> 이전 사진
-            handlePrev();
-        }
-    };
-
+    // 하단 썸네일 정중앙 조준 스크롤 연동 (기존 유지)
     useEffect(() => {
         if (!thumbnailRef.current) return;
 
@@ -60,14 +38,9 @@ const Gallery = () => {
         const selectedThumbnail = container.children[currentIndex];
 
         if (selectedThumbnail) {
-            // 💡 1. 썸네일 박스의 순수한 전체 너비와, 현재 선택된 썸네일의 너비를 구합니다.
-            const containerWidth = container.clientWidth; // offsetWidth 대신 실제 보이는 clientWidth 사용
+            const containerWidth = container.clientWidth;
             const thumbnailWidth = selectedThumbnail.clientWidth;
-
-            // 💡 2. 부모 컨테이너 기준, 선택된 썸네일의 정확한 상대적 왼쪽 시작 위치를 계산합니다.
             const thumbnailLeft = selectedThumbnail.offsetLeft - container.offsetLeft;
-
-            // 💡 3. 핵심 정렬 공식: 썸네일의 중심점을 부모 박스의 중심점에 완벽하게 일치시킵니다.
             const targetScrollLeft = thumbnailLeft - (containerWidth / 2) + (thumbnailWidth / 2);
 
             container.scrollTo({
@@ -75,7 +48,7 @@ const Gallery = () => {
                 behavior: 'smooth'
             });
         }
-    }, [currentIndex]); // 현재 보고 있는 이미지 인덱스가 바뀔 때마다 정밀 조준 스크롤!
+    }, [currentIndex]);
 
     return (
         <section style={containerStyle}>
@@ -84,15 +57,24 @@ const Gallery = () => {
                 <div style={verticalLineStyle}></div>
             </div>
 
-            {/* 📸 2. 대표 이미지 (메인 뷰어 - 여기에 터치 이벤트 주입!) */}
-            <div
-                style={mainViewerStyle}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
-            >
-                <button onClick={handlePrev} style={{ ...navBtnStyle, left: '10px' }}>&#10094;</button>
-                <button onClick={handleNext} style={{ ...navBtnStyle, right: '10px' }}>&#10095;</button>
+            {/* 📸 2. 대표 이미지 메인 뷰어 (터치 스와이프 이벤트를 삭제하여 확대 기능에 집중) */}
+            <div style={mainViewerStyle}>
+                <button onClick={handlePrev} style={{ ...navBtnStyle, left: '15px' }}>
+                    <span style={{
+                        ...arrowIconStyle,
+                        transform: 'rotate(225deg)',
+                        marginLeft: '3px' // 💡 착시 보정을 위한 미세 이동
+                    }} />
+                </button>
 
+                {/* ▶️ 오른쪽 버튼: 중앙 정렬을 위해 왼쪽으로 2px 살짝 밀어줌 */}
+                <button onClick={handleNext} style={{ ...navBtnStyle, right: '15px' }}>
+                    <span style={{
+                        ...arrowIconStyle,
+                        transform: 'rotate(45deg)',
+                        marginRight: '3px' // 💡 착시 보정을 위한 미세 이동
+                    }} />
+                </button>
                 <img
                     key={images[currentIndex].id}
                     src={images[currentIndex].src}
@@ -125,14 +107,16 @@ const Gallery = () => {
     );
 };
 
+// --- 스타일 구조 튜닝 ---
+
 const containerStyle = {
-    padding: '60px 0', // 💡 중요: 좌우 패딩을 0으로 만들어 사진이 꽉 찰 공간 확보
+    padding: '60px 0',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
     width: '100%',
-    overflowX: 'hidden' // 100vw 탈출 시 스크롤바 방지
+    overflowX: 'hidden'
 };
 
 const titleContainerStyle = {
@@ -141,34 +125,24 @@ const titleContainerStyle = {
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center'
-}
-
-const titleStyle = {
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    color: '#16589A',
-    letterSpacing: '2px'
 };
 
-const verticalLineStyle = {
-    marginTop: '10px',
-    marginBottom: '20px',
-    width: '30px',
-    height: '1px',
-    backgroundColor: "#ddd"
-};
+const titleStyle = { fontSize: '1rem', fontWeight: 'bold', color: '#16589A', letterSpacing: '2px' };
+const verticalLineStyle = { marginTop: '10px', marginBottom: '20px', width: '30px', height: '1px', backgroundColor: "#ddd" };
 
 const mainViewerStyle = {
     position: 'relative',
     width: '100vw',
     maxWidth: '500px',
     aspectRatio: '3 / 4',
-    overflow: 'hidden',
+    overflow: 'visible', // 💡 변경: hidden에서 visible로 변경하여 화면 확대 시 이미지가 잘리지 않고 삐져나갈 수 있게 처리
     backgroundColor: '#fafafa',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    touchAction: 'manipulation'
+
+    // 💡 auto로 설정하여 핀치 줌을 포함한 스마트폰 브라우저 고유의 모든 터치 액션을 방해 없이 완벽 허용합니다.
+    touchAction: 'auto'
 };
 
 const mainImageStyle = {
@@ -178,29 +152,37 @@ const mainImageStyle = {
     height: 'auto',
     objectFit: 'contain',
     animation: 'fadeIn 0.5s ease',
+
     WebkitUserDrag: 'none'
 };
-
-// 네비게이션 버튼 스타일 (반투명 원형)
 const navBtnStyle = {
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    color: '#aaa',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)', // 은은한 반투명
     border: 'none',
-    width: '40px',
-    height: '40px',
+    width: '44px',
+    height: '44px',
     borderRadius: '50%',
-    fontSize: '1.2rem',
     cursor: 'pointer',
     zIndex: 10,
     outline: 'none',
-    transition: 'background-color 0.2s',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    WebkitTapHighlightColor: 'transparent'
+    WebkitTapHighlightColor: 'transparent',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.06)' // 은은한 그림자
+};
+
+// 💡 얇고 깨끗한 꺾쇠 선 스타일
+const arrowIconStyle = {
+    display: 'inline-block',
+    width: '10px',
+    height: '10px',
+    borderTop: '2px solid #16589A',
+    borderRight: '2px solid #16589A',
+    boxSizing: 'border-box',
+    // marginLeft: '2px' // 정중앙 시각 정렬 보정
 };
 
 const thumbnailSliderStyle = {
@@ -216,33 +198,26 @@ const thumbnailSliderStyle = {
     scrollbarWidth: 'none',
 };
 
-// 썸네일 이미지 스타일
 const thumbnailImageStyle = {
     width: '93px',
     height: '115px',
-    backgroundColor: '#e0e0e0', // 로딩 전 임시 색상
+    backgroundColor: '#e0e0e0',
     objectFit: 'cover',
-    // borderRadius: '8px',
     cursor: 'pointer',
     transition: 'all 0.2s ease',
-    flexShrink: 0, // 찌그러짐 방지
+    flexShrink: 0,
 };
 
-// 페이드인 애니메이션 정의 (CSS 파일에 넣어도 됨)
 const injectStyles = () => {
+    if (document.getElementById('gallery-inline-style')) return;
     const style = document.createElement('style');
+    style.id = 'gallery-inline-style';
     style.innerHTML = `
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        /* 스크롤바 숨기기 (크롬, 사파리) */
-        div::-webkit-scrollbar {
-            display: none;
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        div::-webkit-scrollbar { display: none; }
     `;
     document.head.appendChild(style);
 };
-injectStyles(); // 스타일 주입
+injectStyles();
 
 export default Gallery;
