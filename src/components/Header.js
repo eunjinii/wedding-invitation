@@ -27,7 +27,7 @@ const Header = () => {
 
             <h1 style={nameBoxContainer}>
                 <span style={nameBoxStyle}>배준식</span>
-                <span style={ampersandStyle}>&</span>
+                <span style={ampersandStyle}>·</span>
                 <span style={nameBoxStyle}>이은진</span>
             </h1>
 
@@ -35,7 +35,7 @@ const Header = () => {
 
             <div style={infoContainer}>
                 <div style={infoStyle}>2026년 08월 22일 토요일 12시 </div>
-                <div style={infoStyle}>논현2동성당</div>
+                <div style={infoStyle}><b>천주교 논현2동 성당</b></div>
             </div>
 
             <DDay />
@@ -112,7 +112,7 @@ const nameBoxStyle = {
 };
 
 const ampersandStyle = {
-    fontSize: '1.2rem',
+    fontSize: '2rem',
 };
 
 const weMarryStyle = {

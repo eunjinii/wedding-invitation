@@ -103,8 +103,8 @@ const colonStyle = {
 };
 
 const weddingDayStyle = {
-    fontSize: '1.5rem',
-    color: '#ff4d4d',
+    fontSize: '1.3rem',
+    color: '#16589A',
     fontWeight: 'bold'
 };
 
